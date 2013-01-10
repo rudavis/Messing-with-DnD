@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checklist</title>
+    <!-- Bootstrap -->
+    
+    <link href="css/ui-lightness/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
+    <style type="text/css">
+    	body {padding: 8px;}
+    	.container {margin:auto;}
+      .btn {min-width: 95px;}
+      #drop ul{
+        list-style-type: none;
+      }
+    </style>
+
+    <script>
+      $(function() {
+        $("#drag li").draggable({
+          appendTo: "body",
+          helper: "clone"
+        });
+        $("#drop").droppable({
+          activeClass: "ui-state-default",
+          hoverClass: "ui-state-hover",
+          accept: ":not(.ui-sortable-helper)",
+          drop: function( event, ui ) {
+            $( this ).find( ".placeholder" ).remove();
+            $( "<li></li>" ).text( ui.draggable.text() ).appendTo( this );
+          }
+        });
+
+
+
+      });
+    </script>
+  
+  </head>
+  <body>
+  	<div class="container">
+  		<div class="hero-unit">
+  			<h1>Make the switch</h1>
+  			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+  			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+  			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  		</div>
+    <div class="row">
+    	<div id="drag" class="span6">
+    		<h2>Things I need to switch</h2>
+          <ul>
+      			<li class="btn btn-primary">Paycheck</li>
+      			<li class="btn btn-primary">Social Security</li>
+      			<li class="btn btn-primary">Other</li>
+          </ul>
+          <ul>
+      			<li class="btn btn-info">Cable</li>
+      			<li class="btn btn-info">Phone</li>
+      			<li class="btn btn-info">Car</li>
+          </ul>
+          <ul>
+      			<li class="btn btn-success">Remind me</li>
+      			<li class="btn btn-success">Remind me2</li>
+      			<li class="btn btn-success">Remind me3</li>
+          </ul>
+    	</div>
+    	<div class="span6">
+    		<h2>My Checklist</h2>
+    		<div id="drop" class="well">
+          <p>
+            <ul>
+              <li class="placeholder">Drop Here</li>
+            </ul>
+          </p>
+    		</div>
+
+    	</div>
+    </div>
+  </div>
+  <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
